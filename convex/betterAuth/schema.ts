@@ -13,8 +13,6 @@ export const tables = {
     image: v.optional(v.union(v.null(), v.string())),
     createdAt: v.number(),
     updatedAt: v.number(),
-    twoFactorEnabled: v.optional(v.union(v.null(), v.boolean())),
-    isAnonymous: v.optional(v.union(v.null(), v.boolean())),
     userId: v.optional(v.union(v.null(), v.string())),
   })
     .index("email_name", ["email","name"])
@@ -60,12 +58,6 @@ export const tables = {
   })
     .index("expiresAt", ["expiresAt"])
     .index("identifier", ["identifier"]),
-  twoFactor: defineTable({
-    secret: v.string(),
-    backupCodes: v.string(),
-    userId: v.string(),
-  })
-    .index("userId", ["userId"]),
   jwks: defineTable({
     publicKey: v.string(),
     privateKey: v.string(),

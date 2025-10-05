@@ -64,9 +64,7 @@ export declare const components: {
                   email: string;
                   emailVerified: boolean;
                   image?: null | string;
-                  isAnonymous?: null | boolean;
                   name: string;
-                  twoFactorEnabled?: null | boolean;
                   updatedAt: number;
                   userId?: null | string;
                 };
@@ -112,10 +110,6 @@ export declare const components: {
                 model: "verification";
               }
             | {
-                data: { backupCodes: string; secret: string; userId: string };
-                model: "twoFactor";
-              }
-            | {
                 data: {
                   createdAt: number;
                   privateKey: string;
@@ -144,8 +138,6 @@ export declare const components: {
                     | "image"
                     | "createdAt"
                     | "updatedAt"
-                    | "twoFactorEnabled"
-                    | "isAnonymous"
                     | "userId"
                     | "id";
                   operator?:
@@ -250,31 +242,6 @@ export declare const components: {
                     | "createdAt"
                     | "updatedAt"
                     | "id";
-                  operator?:
-                    | "lt"
-                    | "lte"
-                    | "gt"
-                    | "gte"
-                    | "eq"
-                    | "in"
-                    | "ne"
-                    | "contains"
-                    | "starts_with"
-                    | "ends_with";
-                  value:
-                    | string
-                    | number
-                    | boolean
-                    | Array<string>
-                    | Array<number>
-                    | null;
-                }>;
-              }
-            | {
-                model: "twoFactor";
-                where?: Array<{
-                  connector?: "AND" | "OR";
-                  field: "secret" | "backupCodes" | "userId" | "id";
                   operator?:
                     | "lt"
                     | "lte"
@@ -348,8 +315,6 @@ export declare const components: {
                     | "image"
                     | "createdAt"
                     | "updatedAt"
-                    | "twoFactorEnabled"
-                    | "isAnonymous"
                     | "userId"
                     | "id";
                   operator?:
@@ -475,31 +440,6 @@ export declare const components: {
                 }>;
               }
             | {
-                model: "twoFactor";
-                where?: Array<{
-                  connector?: "AND" | "OR";
-                  field: "secret" | "backupCodes" | "userId" | "id";
-                  operator?:
-                    | "lt"
-                    | "lte"
-                    | "gt"
-                    | "gte"
-                    | "eq"
-                    | "in"
-                    | "ne"
-                    | "contains"
-                    | "starts_with"
-                    | "ends_with";
-                  value:
-                    | string
-                    | number
-                    | boolean
-                    | Array<string>
-                    | Array<number>
-                    | null;
-                }>;
-              }
-            | {
                 model: "jwks";
                 where?: Array<{
                   connector?: "AND" | "OR";
@@ -533,13 +473,7 @@ export declare const components: {
         "internal",
         {
           limit?: number;
-          model:
-            | "user"
-            | "session"
-            | "account"
-            | "verification"
-            | "twoFactor"
-            | "jwks";
+          model: "user" | "session" | "account" | "verification" | "jwks";
           offset?: number;
           paginationOpts: {
             cursor: string | null;
@@ -579,13 +513,7 @@ export declare const components: {
         "query",
         "internal",
         {
-          model:
-            | "user"
-            | "session"
-            | "account"
-            | "verification"
-            | "twoFactor"
-            | "jwks";
+          model: "user" | "session" | "account" | "verification" | "jwks";
           select?: Array<string>;
           where?: Array<{
             connector?: "AND" | "OR";
@@ -624,9 +552,7 @@ export declare const components: {
                   email?: string;
                   emailVerified?: boolean;
                   image?: null | string;
-                  isAnonymous?: null | boolean;
                   name?: string;
-                  twoFactorEnabled?: null | boolean;
                   updatedAt?: number;
                   userId?: null | string;
                 };
@@ -639,8 +565,6 @@ export declare const components: {
                     | "image"
                     | "createdAt"
                     | "updatedAt"
-                    | "twoFactorEnabled"
-                    | "isAnonymous"
                     | "userId"
                     | "id";
                   operator?:
@@ -775,36 +699,6 @@ export declare const components: {
                     | "createdAt"
                     | "updatedAt"
                     | "id";
-                  operator?:
-                    | "lt"
-                    | "lte"
-                    | "gt"
-                    | "gte"
-                    | "eq"
-                    | "in"
-                    | "ne"
-                    | "contains"
-                    | "starts_with"
-                    | "ends_with";
-                  value:
-                    | string
-                    | number
-                    | boolean
-                    | Array<string>
-                    | Array<number>
-                    | null;
-                }>;
-              }
-            | {
-                model: "twoFactor";
-                update: {
-                  backupCodes?: string;
-                  secret?: string;
-                  userId?: string;
-                };
-                where?: Array<{
-                  connector?: "AND" | "OR";
-                  field: "secret" | "backupCodes" | "userId" | "id";
                   operator?:
                     | "lt"
                     | "lte"
@@ -879,9 +773,7 @@ export declare const components: {
                   email?: string;
                   emailVerified?: boolean;
                   image?: null | string;
-                  isAnonymous?: null | boolean;
                   name?: string;
-                  twoFactorEnabled?: null | boolean;
                   updatedAt?: number;
                   userId?: null | string;
                 };
@@ -894,8 +786,6 @@ export declare const components: {
                     | "image"
                     | "createdAt"
                     | "updatedAt"
-                    | "twoFactorEnabled"
-                    | "isAnonymous"
                     | "userId"
                     | "id";
                   operator?:
@@ -1030,36 +920,6 @@ export declare const components: {
                     | "createdAt"
                     | "updatedAt"
                     | "id";
-                  operator?:
-                    | "lt"
-                    | "lte"
-                    | "gt"
-                    | "gte"
-                    | "eq"
-                    | "in"
-                    | "ne"
-                    | "contains"
-                    | "starts_with"
-                    | "ends_with";
-                  value:
-                    | string
-                    | number
-                    | boolean
-                    | Array<string>
-                    | Array<number>
-                    | null;
-                }>;
-              }
-            | {
-                model: "twoFactor";
-                update: {
-                  backupCodes?: string;
-                  secret?: string;
-                  userId?: string;
-                };
-                where?: Array<{
-                  connector?: "AND" | "OR";
-                  field: "secret" | "backupCodes" | "userId" | "id";
                   operator?:
                     | "lt"
                     | "lte"

@@ -42,9 +42,7 @@ export type Mounts = {
                 email: string;
                 emailVerified: boolean;
                 image?: null | string;
-                isAnonymous?: null | boolean;
                 name: string;
-                twoFactorEnabled?: null | boolean;
                 updatedAt: number;
                 userId?: null | string;
               };
@@ -90,10 +88,6 @@ export type Mounts = {
               model: "verification";
             }
           | {
-              data: { backupCodes: string; secret: string; userId: string };
-              model: "twoFactor";
-            }
-          | {
               data: {
                 createdAt: number;
                 privateKey: string;
@@ -122,8 +116,6 @@ export type Mounts = {
                   | "image"
                   | "createdAt"
                   | "updatedAt"
-                  | "twoFactorEnabled"
-                  | "isAnonymous"
                   | "userId"
                   | "id";
                 operator?:
@@ -228,31 +220,6 @@ export type Mounts = {
                   | "createdAt"
                   | "updatedAt"
                   | "id";
-                operator?:
-                  | "lt"
-                  | "lte"
-                  | "gt"
-                  | "gte"
-                  | "eq"
-                  | "in"
-                  | "ne"
-                  | "contains"
-                  | "starts_with"
-                  | "ends_with";
-                value:
-                  | string
-                  | number
-                  | boolean
-                  | Array<string>
-                  | Array<number>
-                  | null;
-              }>;
-            }
-          | {
-              model: "twoFactor";
-              where?: Array<{
-                connector?: "AND" | "OR";
-                field: "secret" | "backupCodes" | "userId" | "id";
                 operator?:
                   | "lt"
                   | "lte"
@@ -326,8 +293,6 @@ export type Mounts = {
                   | "image"
                   | "createdAt"
                   | "updatedAt"
-                  | "twoFactorEnabled"
-                  | "isAnonymous"
                   | "userId"
                   | "id";
                 operator?:
@@ -453,31 +418,6 @@ export type Mounts = {
               }>;
             }
           | {
-              model: "twoFactor";
-              where?: Array<{
-                connector?: "AND" | "OR";
-                field: "secret" | "backupCodes" | "userId" | "id";
-                operator?:
-                  | "lt"
-                  | "lte"
-                  | "gt"
-                  | "gte"
-                  | "eq"
-                  | "in"
-                  | "ne"
-                  | "contains"
-                  | "starts_with"
-                  | "ends_with";
-                value:
-                  | string
-                  | number
-                  | boolean
-                  | Array<string>
-                  | Array<number>
-                  | null;
-              }>;
-            }
-          | {
               model: "jwks";
               where?: Array<{
                 connector?: "AND" | "OR";
@@ -511,13 +451,7 @@ export type Mounts = {
       "public",
       {
         limit?: number;
-        model:
-          | "user"
-          | "session"
-          | "account"
-          | "verification"
-          | "twoFactor"
-          | "jwks";
+        model: "user" | "session" | "account" | "verification" | "jwks";
         offset?: number;
         paginationOpts: {
           cursor: string | null;
@@ -557,13 +491,7 @@ export type Mounts = {
       "query",
       "public",
       {
-        model:
-          | "user"
-          | "session"
-          | "account"
-          | "verification"
-          | "twoFactor"
-          | "jwks";
+        model: "user" | "session" | "account" | "verification" | "jwks";
         select?: Array<string>;
         where?: Array<{
           connector?: "AND" | "OR";
@@ -602,9 +530,7 @@ export type Mounts = {
                 email?: string;
                 emailVerified?: boolean;
                 image?: null | string;
-                isAnonymous?: null | boolean;
                 name?: string;
-                twoFactorEnabled?: null | boolean;
                 updatedAt?: number;
                 userId?: null | string;
               };
@@ -617,8 +543,6 @@ export type Mounts = {
                   | "image"
                   | "createdAt"
                   | "updatedAt"
-                  | "twoFactorEnabled"
-                  | "isAnonymous"
                   | "userId"
                   | "id";
                 operator?:
@@ -753,36 +677,6 @@ export type Mounts = {
                   | "createdAt"
                   | "updatedAt"
                   | "id";
-                operator?:
-                  | "lt"
-                  | "lte"
-                  | "gt"
-                  | "gte"
-                  | "eq"
-                  | "in"
-                  | "ne"
-                  | "contains"
-                  | "starts_with"
-                  | "ends_with";
-                value:
-                  | string
-                  | number
-                  | boolean
-                  | Array<string>
-                  | Array<number>
-                  | null;
-              }>;
-            }
-          | {
-              model: "twoFactor";
-              update: {
-                backupCodes?: string;
-                secret?: string;
-                userId?: string;
-              };
-              where?: Array<{
-                connector?: "AND" | "OR";
-                field: "secret" | "backupCodes" | "userId" | "id";
                 operator?:
                   | "lt"
                   | "lte"
@@ -857,9 +751,7 @@ export type Mounts = {
                 email?: string;
                 emailVerified?: boolean;
                 image?: null | string;
-                isAnonymous?: null | boolean;
                 name?: string;
-                twoFactorEnabled?: null | boolean;
                 updatedAt?: number;
                 userId?: null | string;
               };
@@ -872,8 +764,6 @@ export type Mounts = {
                   | "image"
                   | "createdAt"
                   | "updatedAt"
-                  | "twoFactorEnabled"
-                  | "isAnonymous"
                   | "userId"
                   | "id";
                 operator?:
@@ -1008,36 +898,6 @@ export type Mounts = {
                   | "createdAt"
                   | "updatedAt"
                   | "id";
-                operator?:
-                  | "lt"
-                  | "lte"
-                  | "gt"
-                  | "gte"
-                  | "eq"
-                  | "in"
-                  | "ne"
-                  | "contains"
-                  | "starts_with"
-                  | "ends_with";
-                value:
-                  | string
-                  | number
-                  | boolean
-                  | Array<string>
-                  | Array<number>
-                  | null;
-              }>;
-            }
-          | {
-              model: "twoFactor";
-              update: {
-                backupCodes?: string;
-                secret?: string;
-                userId?: string;
-              };
-              where?: Array<{
-                connector?: "AND" | "OR";
-                field: "secret" | "backupCodes" | "userId" | "id";
                 operator?:
                   | "lt"
                   | "lte"

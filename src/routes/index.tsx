@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Route as RouteIcon,
   Server,
@@ -86,17 +86,21 @@ function App() {
             Build modern applications with server functions, streaming, and type
             safety.
           </p>
-          <div className="flex flex-col items-center gap-4">
-            <Button asChild className="shadow-lg" size="lg">
-              <a
-                href="https://tanstack.com/start"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Documentation
-              </a>
-            </Button>
-
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-center gap-2">
+              <Button asChild className="shadow-lg" size="lg">
+                <a
+                  href="https://tanstack.com/start"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Documentation
+                </a>
+              </Button>
+              <Button asChild className="shadow-lg" size="lg">
+                <Link to="/sign-up">Sign Up [failing]</Link>
+              </Button>
+            </div>
             <p className="mt-2 text-muted-foreground text-sm">
               Begin your TanStack Start journey by editing{" "}
               <code className="rounded bg-muted px-2 py-1 text-primary">
