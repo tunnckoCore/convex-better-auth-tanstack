@@ -1,5 +1,5 @@
 {
-  "projectName": "tanstack-0xnekos",
+  "projectName": ".",
   "mode": "file-router",
   "typescript": true,
   "tailwind": true,
@@ -11,9 +11,7 @@
     "biome",
     "netlify",
     "start",
-    "clerk",
     "convex",
-    "mcp",
     "tanstack-query",
     "shadcn",
     "t3env",
