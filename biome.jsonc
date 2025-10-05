@@ -1,0 +1,94 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
+  "extends": [
+    "ultracite"
+  ],
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**/src/**/*",
+      "**/.vscode/**/*",
+      "**/index.html",
+      "**/vite.config.js",
+      "src/routes/__root.tsx",
+      "!**/src/routeTree.gen.ts",
+      // "!_*",
+      // "!**/_*",
+      // "!_*/**/_*",
+      "!node_modules",
+      "!convex/tsconfig.json",
+      "!convex/_generated/*",
+      "!convex/**/_generated/*",
+      "!dist",
+      "!build",
+      "!src/components/ui/*",
+      "!src/hooks/use-mobile.ts",
+      "!convex/betterAuth/schema.ts",
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "style": {
+        "noMagicNumbers": "off",
+        "noNestedTernary": "off",
+        "noExportedImports": "off",
+        "noNonNullAssertion": "off",
+        "useFilenamingConvention": "off",
+        "useReadonlyClassProperties": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "off"
+      },
+      "complexity": {
+        "noVoid": "off",
+        "useOptionalChain": "info",
+        "useSimplifiedLogicExpression": "off",
+        "noExcessiveCognitiveComplexity": "info"
+      },
+      "suspicious": {
+        "noImplicitAnyLet": "off",
+        "noUnknownAtRules": "off",
+        "noExplicitAny": "off",
+        "noConsole": "off",
+        "useAwait": "off"
+      },
+      "nursery": {
+        "useConsistentTypeDefinitions": "off",
+        "useConsistentArrowReturn": "off",
+        "noUnnecessaryConditions": "off",
+        "useImageSize": "off"
+      },
+      "performance": {
+        "useTopLevelRegex": "off",
+        "noNamespaceImport": "warn",
+        "noDelete": "warn"
+      }
+    },
+    "domains": {
+      "react": "recommended",
+      "next": "none",
+      "project": "recommended"
+    }
+  }
+}

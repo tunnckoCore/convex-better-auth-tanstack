@@ -1,0 +1,25 @@
+import { cookieStorage, createConfig, createStorage, http } from "wagmi";
+import { base, mainnet, sepolia } from "wagmi/chains";
+import { injected, metaMask } from "wagmi/connectors";
+
+export function getConfig() {
+  return createConfig({
+    chains: [mainnet, sepolia, base],
+    connectors: [injected(), metaMask()],
+    storage: createStorage({
+      storage: cookieStorage,
+    }),
+    ssr: true,
+    transports: {
+      [mainnet.id]: http("https://eth.drpc.org"),
+      [sepolia.id]: http("https://sepolia.drpc.org"),
+      [base.id]: http("https://base.drpc.org"),
+    },
+  });
+}
+
+declare module "wagmi" {
+  interface Register {
+    config: ReturnType<typeof getConfig>;
+  }
+}

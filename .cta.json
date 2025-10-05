@@ -1,0 +1,23 @@
+{
+  "projectName": "tanstack-0xnekos",
+  "mode": "file-router",
+  "typescript": true,
+  "tailwind": true,
+  "packageManager": "bun",
+  "git": true,
+  "version": 1,
+  "framework": "react-cra",
+  "chosenAddOns": [
+    "biome",
+    "netlify",
+    "start",
+    "clerk",
+    "convex",
+    "mcp",
+    "tanstack-query",
+    "shadcn",
+    "t3env",
+    "table",
+    "oRPC"
+  ]
+}

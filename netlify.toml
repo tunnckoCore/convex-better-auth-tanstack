@@ -1,0 +1,7 @@
+[build]
+command = "vite build"
+dir = "dist/client"
+
+[dev]
+command = "vite dev"
+port = 3000
