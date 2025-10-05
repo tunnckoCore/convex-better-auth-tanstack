@@ -2,7 +2,6 @@ import {
   // type AuthFunctions,
   createClient,
   type GenericCtx,
-  getStaticAuth,
 } from "@convex-dev/better-auth";
 import { convex } from "@convex-dev/better-auth/plugins";
 // import { requireActionCtx } from "@convex-dev/better-auth/utils";
@@ -13,7 +12,8 @@ import type { DataModel } from "./_generated/dataModel";
 import { type QueryCtx, query } from "./_generated/server";
 import betterAuthSchema from "./betterAuth/schema";
 
-const siteUrl = "https://frugal-anteater-479.convex.site";
+const APP_URL =
+  process.env.APP_URL || process.env.VITE_APP_URL || "http://localhost:3000";
 
 export const authComponent = createClient<DataModel, typeof betterAuthSchema>(
   components.betterAuth,
@@ -32,7 +32,7 @@ export const createAuth = (
   { optionsOnly } = { optionsOnly: false }
 ) =>
   betterAuth({
-    baseURL: siteUrl,
+    baseURL: APP_URL,
     database: authComponent.adapter(ctx),
     logger: {
       disabled: optionsOnly,
