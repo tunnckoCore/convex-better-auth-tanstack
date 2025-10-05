@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "convex/react";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { api } from "@/convex/_generated/api";
 import { authClient } from "@/lib/auth-client";
 
 export const Route = createFileRoute("/sign-in")({
@@ -20,17 +22,24 @@ export const Route = createFileRoute("/sign-in")({
 });
 
 function SignIn() {
+  const data = useQuery(api.users.list);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
+  console.log({ data });
   return (
     <Card className="max-w-md">
       <CardHeader>
         <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
         <CardDescription className="text-xs md:text-sm">
           Enter your email below to login to your account
+          {data?.map((user) => (
+            <div key={user.userId}>
+              {user.userId} - {user.email}
+            </div>
+          ))}
         </CardDescription>
       </CardHeader>
       <CardContent>

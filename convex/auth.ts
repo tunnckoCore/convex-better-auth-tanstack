@@ -8,7 +8,7 @@ import { convex } from "@convex-dev/better-auth/plugins";
 import { betterAuth } from "better-auth";
 // import { anonymous, twoFactor } from "better-auth/plugins";
 import { components } from "./_generated/api";
-import type { DataModel } from "./_generated/dataModel";
+import type { DataModel, Id } from "./_generated/dataModel";
 import { type QueryCtx, query } from "./_generated/server";
 import betterAuthSchema from "./betterAuth/schema";
 
@@ -22,6 +22,29 @@ export const authComponent = createClient<DataModel, typeof betterAuthSchema>(
       schema: betterAuthSchema,
     },
     verbose: false,
+    triggers: {
+      user: {
+        onCreate: async (ctx, authUser) => {
+          const userId = await ctx.db.insert("user", authUser);
+          await authComponent.setUserId(ctx, authUser._id, userId);
+        },
+        onUpdate: async (ctx, oldUser, newUser) => {
+          if (oldUser.email === newUser.email) {
+            return;
+          }
+          await ctx.db.patch(newUser.userId as Id<"user">, {
+            email: newUser.email,
+          });
+        },
+        onDelete: async (ctx, authUser) => {
+          const user = await ctx.db.get(authUser.userId as Id<"user">);
+          if (!user) {
+            return;
+          }
+          await ctx.db.delete(user._id);
+        },
+      },
+    },
   }
 );
 
