@@ -49,6 +49,7 @@
     "rules": {
       "recommended": true,
       "style": {
+        "useTemplate": "off",
         "noMagicNumbers": "off",
         "noNestedTernary": "off",
         "noExportedImports": "off",
@@ -62,6 +63,7 @@
       },
       "complexity": {
         "noVoid": "off",
+        "noForEach": "off",
         "useOptionalChain": "info",
         "useSimplifiedLogicExpression": "off",
         "noExcessiveCognitiveComplexity": "info"
